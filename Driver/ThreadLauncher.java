@@ -21,7 +21,7 @@ public class ThreadLauncher {
 	
 	public void fireThreads() {
 		ArrayList<Thread> team = new ArrayList<Thread>();
-		for(int i = 0; i < numThreads; i++) {
+		for(int i = 1; i < numThreads+1; i++) {
 			Thread worker = new Thread(new IncrementThread(lock, knob, knobTurns, i));
 			team.add(worker);
 		}

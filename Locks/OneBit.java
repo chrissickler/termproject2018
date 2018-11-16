@@ -2,31 +2,31 @@ package Locks;
 
 public class OneBit implements Lock {
 
-	private boolean[] b;
+	private volatile boolean[] b;
 	private int numThreads;
 	
 	public OneBit(int numThreads) {
 		this.numThreads = numThreads;
-		b = new boolean[numThreads];
-		for(int i = 0; i < numThreads; i++) {
+		b = new boolean[numThreads+1];
+		for(int i = 0; i < numThreads+1; i++) {
 			b[i] = false;
 		}
 	}
 	
 	public void lock(int threadID) {
 		int j;
-		while(b[threadID] != true) {
+		do {
 			b[threadID] = true;
-			j = 0;
+			j = 1;
 			while((b[threadID] == true) && (j < threadID)) {
 				if(b[j] == true) {
 					b[threadID] = false;
+					while(b[j] == true);
 				}
-				while(b[j] == true);
 				j++;
 			}
-		}
-		for(j = threadID + 1; j < numThreads; j++) {
+		} while(b[threadID] != true);
+		for(j = threadID + 1; j < numThreads+1; j++) {
 			while(b[j] == true);
 		}
 	}
