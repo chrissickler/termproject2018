@@ -29,7 +29,6 @@ public class SimpleTest {
     			TestOneBitAdaptive();
     			System.out.println("\t ->OneBitAdaptive");
     		}
-
     	}
     }
     
