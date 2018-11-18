@@ -4,9 +4,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 
+import Tests.SimpleTest;
+
 public class AndersonAdaptive implements Lock {
 
-    private int knobTurns;
     private AtomicIntegerArray x;
     private boolean[] b;
     private AtomicBoolean[] y;
@@ -14,13 +15,12 @@ public class AndersonAdaptive implements Lock {
     private AtomicInteger globalLevel;
     private int[] myLevel;
 
-    public AndersonAdaptive(int numThreads, int knobTurns) {
-        this.knobTurns = knobTurns;
-        x = new AtomicIntegerArray(this.knobTurns*2);
-        b = new boolean[this.knobTurns*2];
-        y = new AtomicBoolean[this.knobTurns*2];
-        z = new AtomicBoolean[this.knobTurns*2];
-        for(int i = 0; i < this.knobTurns*  2; i++) {
+    public AndersonAdaptive(int numThreads) {
+        x = new AtomicIntegerArray(SimpleTest.knobTurns*2);
+        b = new boolean[SimpleTest.knobTurns*2];
+        y = new AtomicBoolean[SimpleTest.knobTurns*2];
+        z = new AtomicBoolean[SimpleTest.knobTurns*2];
+        for(int i = 0; i < SimpleTest.knobTurns*2; i++) {
             y[i] = new AtomicBoolean(false);
             z[i] = new AtomicBoolean(false);
         }
