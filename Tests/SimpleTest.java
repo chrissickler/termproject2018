@@ -18,20 +18,20 @@ public class SimpleTest {
             for(int j = 1; j < 9; j++) {
                 numThreads = j;
                 System.out.println("knobTurns = " + i + " numThreads = " + j);
-//                TestReentrant();
-//                System.out.println("\t ->Reentrant");
-//                TestSynchronized();
-//                System.out.println("\t ->Synchronized");
-//                TestAtomic();
-//                System.out.println("\t ->Atomic");
+                TestReentrant();
+                System.out.println("\t ->Reentrant");
+                TestSynchronized();
+                System.out.println("\t ->Synchronized");
+                TestAtomic();
+                System.out.println("\t ->Atomic");
                 TestOneBit();
                 System.out.println("\t ->OneBit");
-//                TestOneBitAdaptive();
-//                System.out.println("\t ->OneBitAdaptive");
-//                TestAndersonAdaptive();
-//                System.out.println("\t ->AndersonAdaptive");
-//                TestColoredBakery();
-//                System.out.println("\t ->ColoredBakery");
+                TestOneBitAdaptive();
+                System.out.println("\t ->OneBitAdaptive");
+                TestAndersonAdaptive();
+                System.out.println("\t ->AndersonAdaptive");
+                TestColoredBakery();
+                System.out.println("\t ->ColoredBakery");
             }
         }
     }
